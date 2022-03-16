@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    color: white;
+    background-color: darkblue;
+    font-size: 30px;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+}
+
+.dashboard {
+    display: flex;
+}
+
+form {
+    border-bottom: solid 3px grey;
+}
+
+.cards {
+    display: flex;
+}
