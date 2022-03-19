@@ -5,12 +5,16 @@ var stateSelect = document.querySelector("#stateselect");
 
 
 
-var getWeatherData = function(/*pass in coordinates*/) {
-    var requestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&units=imperial&appid={API key}";
+var getWeatherData = function(data) {
+    var latitude = data.lat.json.stringify();  // these two lines
+    var longitude = data.lon.json.stringify(); // are not correct
+    
+    var requestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude={part}&units=imperial&appid=12aa7dcc32e49f0342370d0c3b3204d7";
 
     fetch(requestUrl).then(function(response) {
         if (response.ok) {
-            response.json().then(function(data) { //these two lines might not be right
+            response.json().then(function(data) {
+                console.log(data);
                 //call function to insert data into correct elements
             });
         } 
@@ -30,7 +34,7 @@ var getCoordinates = function(cityName, stateCode) {
         if (response.ok) {
             response.json().then(function(data) {
                 console.log(data);
-                //getWeatherData(/*pass in data to reference lat and lon coordinates*/);
+                getWeatherData(data);
             });
         } else {
             alert("Error: Please enter valid location");
