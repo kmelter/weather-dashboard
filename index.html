@@ -12,11 +12,12 @@
 
     <div class=" row dashboard">
         <div class="col-3 search">
-            <form>
+            <form id="user-form">
                 <label for="citysearch">Search for a City:</label>
                 <input type="text" id="citysearch" name="citysearch">
-                <label for="stateselect">Choose State:</label>
+                <label for="stateselect">State:</label>
                 <select name="stateselect" id="stateselect">
+                    <option disabled selected value> -- select a state -- </option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
