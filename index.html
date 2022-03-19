@@ -10,11 +10,14 @@
 <body>
     <div class="header">Weather Dashboard</div>
 
-    <div class=" row dashboard">
-        <div class="col-3 search">
+    <div class="row dashboard">
+        <div class="col-3 col-lg-3 search">
             <form id="user-form">
                 <label for="citysearch">Search for a City:</label>
                 <input type="text" id="citysearch" name="citysearch">
+
+                <br>
+
                 <label for="stateselect">State:</label>
                 <select name="stateselect" id="stateselect">
                     <option disabled selected value> -- select a state -- </option>
@@ -71,12 +74,12 @@
                 </select>
                 <input type="submit" value="Submit" id="submitbutton">
             </form>
-            
-            <ul>
+            <div id="search-buttons" class="search-history">
                 <!--search history items could be added here as list items (or buttons in a normal div)-->
-            </ul>
+                
+            </div>
         </div>
-        <div class="col-9 selected-city">
+        <div class="col-9 col-lg-9 selected-city">
             <div class="city">
                 <h2 class="cityname">City: <span id="selected-city"></span></h2>
                 <p>Temp: <span id="current-temp"></span></p>

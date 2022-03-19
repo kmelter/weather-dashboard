@@ -17,7 +17,12 @@ body {
 }
 
 .search {
-    border-bottom: solid 3px grey;
+    max-width: 400px;
+}
+
+.search-history {
+    margin-top: 10px;
+    border-top: 3px solid grey;
 }
 
 .selected-city {

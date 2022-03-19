@@ -34,6 +34,9 @@ var insertData = function(data) {
         document.getElementById("current-uv").style.color = "white";
         document.getElementById("current-uv").style.backgroundColor = "red";
     }
+
+    cityInput.value = "";
+    stateSelect.value = "";
 };
 
 var getWeatherData = function(data) {
@@ -87,11 +90,19 @@ var formSubmitHandler = function(event) {
     var cityName = cityInput.value.trim().toLowerCase();
     var stateCode = stateSelect.value.trim();
 
+    var weatherStorage = {
+        city: cityName,
+        state: stateCode
+    };
+
     //TODO: store search in local storage
+    localStorage.setItem(cityName, JSON.stringify(weatherStorage));
+    var historyButton = document.createElement("button");
+    historyButton.textContent = cityName.toUpperCase();
+    document.getElementById("search-buttons").appendChild(historyButton);
 
     if (cityName, stateCode) {
         getCoordinates(cityName, stateCode);
-        // cityInput.value = "";
     } else {
         alert("Please enter city and state");
     }
