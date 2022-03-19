@@ -13,6 +13,27 @@ var insertData = function(data) {
     document.getElementById("current-wind").textContent = currentWind + " mph";
     document.getElementById("current-humidity").textContent = currentHumidity + "%";
     document.getElementById("current-uv").textContent = currentUV;
+
+    for (i = 0; i < 5; i++) {
+        //insert symbol
+        document.getElementById("temp" + i).textContent = data.daily[i].temp.max.toString() + " F";
+        //TODO: These two arent working for some reason:
+        document.getElementById("wind" + i).textcontent = data.daily[i].wind_speed.toString() + " mph";
+        document.getElementById("humidity" + i).textcontent = data.daily[i].humidity.toString() + "%";
+    }
+
+    if (currentUV === 1 || 2) {
+        document.getElementById("current-uv").style.color = "white";
+        document.getElementById("current-uv").style.backgroundColor = "green";
+    }
+    if (currentUV === 3 || 4) {
+        document.getElementById("current-uv").style.color = "black";
+        document.getElementById("current-uv").style.backgroundColor = "yellow";
+    }
+    if (currentUV > 5) {
+        document.getElementById("current-uv").style.color = "white";
+        document.getElementById("current-uv").style.backgroundColor = "red";
+    }
 };
 
 var getWeatherData = function(data) {

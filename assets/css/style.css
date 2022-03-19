@@ -13,6 +13,7 @@ body {
 
 .dashboard {
     display: flex;
+    margin-top: 10px;
 }
 
 .search {
@@ -25,4 +26,13 @@ body {
 
 .cards {
     display: flex;
+    justify-content: space-between;
+}
+
+.forecast-card {
+    padding-right: 70px;
+    padding-left: 10px;
+    margin-right: 20px;
+    color: white;
+    background-color: rgb(65, 65, 114);
 }
