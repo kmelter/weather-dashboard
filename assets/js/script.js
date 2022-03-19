@@ -9,17 +9,15 @@ var insertData = function(data) {
     var currentHumidity = data.current.humidity.toString();
     var currentUV = data.current.uvi.toString();
 
-    
-    document.getElementById("selected-city").textContent = cityInput.value.trim();
-    document.getElementById("current-temp").textContent = currentTemp;
-    document.getElementById("current-wind").textContent = currentWind;
-    document.getElementById("current-humidity").textContent = currentHumidity;
+    document.getElementById("current-temp").textContent = currentTemp + " F";
+    document.getElementById("current-wind").textContent = currentWind + " mph";
+    document.getElementById("current-humidity").textContent = currentHumidity + "%";
     document.getElementById("current-uv").textContent = currentUV;
 };
 
 var getWeatherData = function(data) {
-    var latitude = data[0].lat.toString();  // these two lines
-    var longitude = data[0].lon.toString(); // are not correct
+    var latitude = data[0].lat.toString();
+    var longitude = data[0].lon.toString();
     
     console.log(latitude);
     console.log(longitude);
@@ -51,6 +49,7 @@ var getCoordinates = function(cityName, stateCode) {
         if (response.ok) {
             response.json().then(function(data) {
                 console.log(data);
+                document.getElementById("selected-city").textContent = data[0].name;
                 getWeatherData(data);
             });
         } else {
@@ -64,7 +63,7 @@ var getCoordinates = function(cityName, stateCode) {
 
 var formSubmitHandler = function(event) {
     event.preventDefault();
-    var cityName = cityInput.value.trim();
+    var cityName = cityInput.value.trim().toLowerCase();
     var stateCode = stateSelect.value.trim();
 
     //TODO: store search in local storage

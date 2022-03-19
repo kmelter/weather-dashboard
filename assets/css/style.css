@@ -19,6 +19,10 @@ body {
     border-bottom: solid 3px grey;
 }
 
+.selected-city {
+    margin-left: 10px;
+}
+
 .cards {
     display: flex;
 }
