@@ -18,7 +18,6 @@ $(document).ready(function(){
     setInterval(update, 1000);
 });
 
-
 var cityButton = function() {
     var cityName = $(this).attr("id").toLowerCase();
     var storageObject = localStorage.getItem(cityName);
@@ -59,13 +58,15 @@ var insertData = function(data) {
     document.getElementById("current-humidity").textContent = currentHumidity + "%";
     document.getElementById("current-uv").textContent = currentUV;
 
-    for (i = 0; i < 5; i++) {
-        
-        //TODO: display dates for next five days in forecast
+    for (let i = 0; i < 5; i++) {
+        // datetime = $('#date' + i);
+        // datetime.textContent = htmlmoment().add(i + 1, 'days').calendar().format('L');
+
+
         document.getElementById("temp" + i).textContent = data.daily[i].temp.max.toString() + " F";
         //TODO: These two arent working for some reason:
-        document.getElementById("wind" + i).textcontent = data.daily[i].wind_speed.toString() + " mph";
-        document.getElementById("humidity" + i).textcontent = data.daily[i].humidity.toString() + "%";
+        document.getElementById("wind" + i).textContent = data.daily[i].wind_speed.toString() + " mph";
+        document.getElementById("humidity" + i).textContent = data.daily[i].humidity.toString() + "%";
     }
 
     if (currentUV < 3) {
@@ -151,4 +152,3 @@ var formSubmitHandler = function(event) {
 userFormEl.addEventListener("submit", formSubmitHandler);
 
 getButtons();
-getDates();
