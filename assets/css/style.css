@@ -25,6 +25,15 @@ body {
     border-top: 3px solid grey;
 }
 
+.storage-button {
+    background-color: indigo;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 5px;
+    margin: 5px;
+}
+
 .selected-city {
     margin-left: 10px;
 }

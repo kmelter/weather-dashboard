@@ -3,6 +3,26 @@ var cityInput = document.querySelector("#citysearch");
 var stateSelect = document.querySelector("#stateselect");
 
 
+var getButtons = function() {
+    var values = [],
+        keys = Object.keys(localStorage),
+        i = keys.length;
+
+    while (i--) {
+        values.push(localStorage.getItem(keys[i]));
+    }
+
+    for (i = 0; i < values.length; i++) {
+        var parsedItem = JSON.parse(values[i]);
+        console.log(parsedItem);
+        var historyButton = document.createElement("button");
+        historyButton.id = parsedItem.city;
+        historyButton.classList.add("storage-button");
+        historyButton.textContent = parsedItem.city.toUpperCase();
+        document.getElementById("search-buttons").appendChild(historyButton);
+    }
+};
+
 var insertData = function(data) {
     var currentTemp = data.current.temp.toString();
     var currentWind = data.current.wind_speed.toString();
@@ -111,7 +131,4 @@ var formSubmitHandler = function(event) {
 
 userFormEl.addEventListener("submit", formSubmitHandler);
 
-//TODO:
-// * call api to find coordinates from city name and state code inputs
-// * call api to find weather data and change temperature units to fahrenheit in url
-// * maybe hardcode country code as United States
+getButtons();
