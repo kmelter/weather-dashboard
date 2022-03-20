@@ -3,6 +3,16 @@ var cityInput = document.querySelector("#citysearch");
 var stateSelect = document.querySelector("#stateselect");
 
 
+var cityButton = function() {
+    var cityName = $(this).attr("id").toLowerCase();
+    var storageObject = localStorage.getItem(cityName);
+    //TODO: make stateCode variable to pass into getCoordinates function
+    var stateCode = JSON.parse(storageObject).state;
+    console.log(cityName);
+    console.log(stateCode);
+    getCoordinates(cityName, stateCode);
+};
+
 var getButtons = function() {
     var values = [],
         keys = Object.keys(localStorage),
@@ -20,6 +30,7 @@ var getButtons = function() {
         historyButton.classList.add("storage-button");
         historyButton.textContent = parsedItem.city.toUpperCase();
         document.getElementById("search-buttons").appendChild(historyButton);
+        historyButton.addEventListener("click", cityButton);
     }
 };
 
