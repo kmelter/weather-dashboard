@@ -6,7 +6,6 @@ var stateSelect = document.querySelector("#stateselect");
 var cityButton = function() {
     var cityName = $(this).attr("id").toLowerCase();
     var storageObject = localStorage.getItem(cityName);
-    //TODO: make stateCode variable to pass into getCoordinates function
     var stateCode = JSON.parse(storageObject).state;
     console.log(cityName);
     console.log(stateCode);
@@ -46,22 +45,22 @@ var insertData = function(data) {
     document.getElementById("current-uv").textContent = currentUV;
 
     for (i = 0; i < 5; i++) {
-        //insert symbol
+        //TODO: insert symbol
         document.getElementById("temp" + i).textContent = data.daily[i].temp.max.toString() + " F";
         //TODO: These two arent working for some reason:
         document.getElementById("wind" + i).textcontent = data.daily[i].wind_speed.toString() + " mph";
         document.getElementById("humidity" + i).textcontent = data.daily[i].humidity.toString() + "%";
     }
 
-    if (currentUV === 1 || 2) {
+    if (currentUV < 3) {
         document.getElementById("current-uv").style.color = "white";
         document.getElementById("current-uv").style.backgroundColor = "green";
     }
-    if (currentUV === 3 || 4) {
+    if (currentUV >= 3 && currentUV < 5) {
         document.getElementById("current-uv").style.color = "black";
         document.getElementById("current-uv").style.backgroundColor = "yellow";
     }
-    if (currentUV > 5) {
+    if (currentUV >= 5) {
         document.getElementById("current-uv").style.color = "white";
         document.getElementById("current-uv").style.backgroundColor = "red";
     }
