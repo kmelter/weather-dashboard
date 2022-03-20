@@ -74,18 +74,15 @@
                 </select>
                 <input type="submit" value="Submit" id="submitbutton">
             </form>
-            <div id="search-buttons" class="search-history">
-                <!--search history items could be added here as list items (or buttons in a normal div)-->
-                
-            </div>
+            <div id="search-buttons" class="search-history"></div>
         </div>
         <div class="col-9 col-lg-9 selected-city">
             <div class="city">
-                <h2 class="cityname">City: <span id="selected-city"></span></h2>
+                <h2 class="cityname">City: <span id="selected-city"></span> (<span id="date"></span>)</h2>
                 <p>Temp: <span id="current-temp"></span></p>
                 <p>Wind: <span id="current-wind"></span></p>
                 <p>Humidity: <span id="current-humidity"></span></p>
-                <p>UV Index: <span id="current-uv"></span></p>
+                <p>UV Index: <span id="current-uv" class="uv"></span></p>
             </div>
             <div class="forecast">
                 <h2>5-Day Forecast:</h2>
@@ -133,6 +130,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="./assets/js/script.js"></script>
 </body>

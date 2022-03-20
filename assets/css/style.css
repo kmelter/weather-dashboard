@@ -38,6 +38,10 @@ body {
     margin-left: 10px;
 }
 
+.uv {
+    padding: 2px;
+}
+
 .cards {
     display: flex;
     justify-content: space-between;

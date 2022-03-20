@@ -3,12 +3,26 @@ var cityInput = document.querySelector("#citysearch");
 var stateSelect = document.querySelector("#stateselect");
 
 
+
+
+
+var update = function () {
+    date = moment(new Date())
+    datetime.html(date.format('L'));
+};
+      
+// update current time each second
+$(document).ready(function(){
+    datetime = $('#date')
+    update();
+    setInterval(update, 1000);
+});
+
+
 var cityButton = function() {
     var cityName = $(this).attr("id").toLowerCase();
     var storageObject = localStorage.getItem(cityName);
     var stateCode = JSON.parse(storageObject).state;
-    console.log(cityName);
-    console.log(stateCode);
     getCoordinates(cityName, stateCode);
 };
 
@@ -38,14 +52,16 @@ var insertData = function(data) {
     var currentWind = data.current.wind_speed.toString();
     var currentHumidity = data.current.humidity.toString();
     var currentUV = data.current.uvi.toString();
-
+    
+    //TODO: get symbols
     document.getElementById("current-temp").textContent = currentTemp + " F";
     document.getElementById("current-wind").textContent = currentWind + " mph";
     document.getElementById("current-humidity").textContent = currentHumidity + "%";
     document.getElementById("current-uv").textContent = currentUV;
 
     for (i = 0; i < 5; i++) {
-        //TODO: insert symbol
+        
+        //TODO: display dates for next five days in forecast
         document.getElementById("temp" + i).textContent = data.daily[i].temp.max.toString() + " F";
         //TODO: These two arent working for some reason:
         document.getElementById("wind" + i).textcontent = data.daily[i].wind_speed.toString() + " mph";
@@ -72,9 +88,6 @@ var insertData = function(data) {
 var getWeatherData = function(data) {
     var latitude = data[0].lat.toString();
     var longitude = data[0].lon.toString();
-    
-    console.log(latitude);
-    console.log(longitude);
 
     var requestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=12aa7dcc32e49f0342370d0c3b3204d7";
 
@@ -94,9 +107,6 @@ var getWeatherData = function(data) {
 var getCoordinates = function(cityName, stateCode) {
     //format openweather url
     var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "," + stateCode + ",US&limit=1&appid=12aa7dcc32e49f0342370d0c3b3204d7";
-    
-    console.log(cityName);
-    console.log(stateCode);
 
     //make a request to the url
     fetch(requestUrl).then(function(response) {
@@ -125,7 +135,6 @@ var formSubmitHandler = function(event) {
         state: stateCode
     };
 
-    //TODO: store search in local storage
     localStorage.setItem(cityName, JSON.stringify(weatherStorage));
     var historyButton = document.createElement("button");
     historyButton.textContent = cityName.toUpperCase();
@@ -142,3 +151,4 @@ var formSubmitHandler = function(event) {
 userFormEl.addEventListener("submit", formSubmitHandler);
 
 getButtons();
+getDates();
