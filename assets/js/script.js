@@ -15,7 +15,7 @@ var update = function () {
 $(document).ready(function(){
     datetime = $('#date')
     update();
-    setInterval(update, 1000);
+    setInterval(update, 60000);
 });
 
 var cityButton = function() {
